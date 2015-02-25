@@ -3,6 +3,10 @@ import numpy as np
 #import random
 import matplotlib.pyplot as mpl
 
+# in its current state, this file returns output from both cells but it is not the output it should have, so there is still a bug I need to fix.
+
+#Python code is very similar to matlab code and I hope it is intuitively clear, though I will add more comments along the way.
+
 
 # this is the old ODE code from the Matlab file:
 ###ODE test
@@ -326,6 +330,8 @@ mpl.plot(np.arange(len(v_total2)),v_total2,'r')
 mpl.show()
 
 #################
+
+# PREVIOUS MATLAB CODE:
 
 # the matlab loop
 
