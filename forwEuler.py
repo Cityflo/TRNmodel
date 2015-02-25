@@ -4,61 +4,7 @@ import numpy as np
 import matplotlib.pyplot as mpl
 
 
-y0 = 1.1
-tstop = 30
-
-def dy_dt(y):
-    tau= 4.0
-    return -y*(1.0/tau) 
-
-deltat = 0.05
-
-
-# exact solution (a decaying exponential)
-def solution(t):
-  tau = 4.0
-  return 1.1*np.exp(-t/tau)
-
-
-t = np.arange(0,tstop+deltat,deltat)
-y = np.zeros(len(t))
-
-for i in range(0,len(t)):
-    y[i] = solution(i*deltat)
-
-#mpl.figure()
-#mpl.plot(t/deltat,y,color='g',linewidth=2)
-    
-
-# numerical solution:
-# midpoint method
-y_now = y0
-for i in range(0,int(tstop/deltat)):
-
-    y_halfway = y_now + (deltat/2.0)*(dy_dt(y_now))
-    y_next = y_now + deltat*dy_dt(y_halfway)
-    
-    #mpl.plot(i,y_next,'o',color='r')
-    y_now = y_next # move to the next iteration
-
-space = 10
-
-print np.arange(0,tstop/deltat+space/deltat,space/deltat)
-print np.arange(0,tstop+space,space)
-                
-#mpl.xticks(np.arange(0,tstop/deltat+space/deltat,space/deltat),np.arange(0,tstop,space),fontsize=14)
-#mpl.show()
-
-# numerical solution:
-# backward Euler method
-#y_next = y_now + deltat*(dy_dt(y_next, tau))
-#estimate y_next using iteration:
-
-
-
-
-
-
+# this is the old ODE code from the Matlab file:
 ###ODE test
 #y0, t0 = [1.0j, 2.0], 0
 #def f(t, y, arg1):
@@ -75,9 +21,12 @@ print np.arange(0,tstop+space,space)
 #print r.y
 ##print("%g %g" % (r.t, r.y))
 
+
 #ds = TwoTRNCells(t,s)    
 def TwoTRNCells(s,t):  
-
+    
+    #this is the python function that determines the differential equations for all the variables. The input is the initial or previous parameter state for all parameters in the vector s, and the timestep t.
+    
     global C, g_ca_lts, g_L
     global istart, istop, iDC, iDC2, A, A2, T1, T2, tA, tA2
     #global g12, g21
